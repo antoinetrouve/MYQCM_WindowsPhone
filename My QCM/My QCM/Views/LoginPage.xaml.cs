@@ -9,12 +9,12 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using My_QCM.Resources;
 
-namespace My_QCM
+namespace My_QCM.Views
 {
-    public partial class MainPage : PhoneApplicationPage
+    public partial class LoginPage : PhoneApplicationPage
     {
         // Constructeur
-        public MainPage()
+        public LoginPage()
         {
             InitializeComponent();
 
