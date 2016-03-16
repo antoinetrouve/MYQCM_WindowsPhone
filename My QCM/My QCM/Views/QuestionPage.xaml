@@ -19,6 +19,7 @@
       <RowDefinition Height="Auto"/>
       <RowDefinition Height="Auto"/>
       <RowDefinition Height="*"/>
+      <RowDefinition Height="Auto"/>
     </Grid.RowDefinitions>
 
     <!--TitlePanel contient le nom de l'application et le titre de la page-->
@@ -48,8 +49,5 @@
         <Button Content="Valider"></Button>
       </StackPanel>
     </Grid>
-    
-
   </Grid>
-
 </phone:PhoneApplicationPage>
