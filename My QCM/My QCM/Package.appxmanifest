@@ -15,7 +15,7 @@
     <Resource Language="x-generate" />
   </Resources>
   <Applications>
-    <Application Id="App" Executable="AGHost.exe" EntryPoint="Views/MenuPivotPage.xaml">
+    <Application Id="App" Executable="AGHost.exe" EntryPoint="Views/CategoryListPage.xaml">
       <m3:VisualElements DisplayName="My QCM" Square150x150Logo="Assets\SquareTile150x150.png" Square44x44Logo="Assets\Logo.png" Description="My QCM" ForegroundText="light" BackgroundColor="#464646">
         <m3:DefaultTile Square71x71Logo="Assets\SquareTile71x71.png">
         </m3:DefaultTile>
