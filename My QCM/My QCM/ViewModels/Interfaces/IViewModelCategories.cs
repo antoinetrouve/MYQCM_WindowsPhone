@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookShop.ViewModels
+namespace My_QCM.ViewModels
 {
     public interface IViewModelCategories : IViewModelList<Category>
     {

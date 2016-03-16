@@ -1,4 +1,4 @@
-﻿using BookShop.ViewModels;
+﻿using My_QCM.ViewModels;
 using MVVM.Interfaces;
 using MVVM.ViewModels;
 using My_QCM.Models;
@@ -8,6 +8,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net;
+using Newtonsoft.Json;
 
 namespace My_QCM.ViewModels
 {
@@ -24,10 +26,21 @@ namespace My_QCM.ViewModels
 
         public override  void LoadData()
         {
+            WebClient webClient = new WebClient();
+            webClient.DownloadStringCompleted += WebClient_DownloadStringCompleted;
+            webClient.DownloadStringAsync(new Uri("http://192.168.100.22/qcm/web/app_dev.php/api/users.json"));
             this.ItemsSource.Add(new Category("Roman"));
             this.ItemsSource.Add(new Category("SFI"));
             this.ItemsSource.Add(new Category("Romance"));
             this.ItemsSource.Add(new Category("Fantastique"));
+        }
+
+        private void WebClient_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
+        {
+
+                string jsonsstream = e.Result;
+                System.Diagnostics.Debug.WriteLine(jsonsstream);
+
         }
 
         #endregion

@@ -1,16 +1,14 @@
-﻿using My_QCM.Models;
-using MVVM.Interfaces;
-using MVVM.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MVVM.Interfaces;
+using My_QCM.Models;
 
 namespace My_QCM.ViewModels
 {
-    interface IViewModelCategory : IViewModelItem<Category>
+    public interface IViewModelQuestions : IViewModelList<Question>
     {
-  
     }
 }

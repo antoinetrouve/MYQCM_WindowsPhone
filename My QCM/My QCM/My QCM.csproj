@@ -96,9 +96,16 @@
     </Compile>
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Mcq.cs" />
+    <Compile Include="Models\Question.cs" />
     <Compile Include="ViewModels\Interfaces\IViewModelCategories.cs" />
     <Compile Include="ViewModels\Interfaces\IViewModelCategory.cs" />
+    <Compile Include="ViewModels\Interfaces\IViewModelMcq.cs" />
+    <Compile Include="ViewModels\Interfaces\IViewModelMcqs.cs" />
+    <Compile Include="ViewModels\Interfaces\IViewModelQuestion.cs" />
+    <Compile Include="ViewModels\Interfaces\IViewModelQuestions.cs" />
     <Compile Include="ViewModels\ViewModelCategoryListTest.cs" />
+    <Compile Include="ViewModels\ViewModelMcqListTest.cs" />
     <Compile Include="Views\CategoryListPage.xaml.cs">
       <DependentUpon>CategoryListPage.xaml</DependentUpon>
     </Compile>
@@ -110,6 +117,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\McqListPage.xaml.cs">
+      <DependentUpon>McqListPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MenuPivotPage.xaml.cs">
       <DependentUpon>MenuPivotPage.xaml</DependentUpon>
@@ -131,6 +141,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\McqListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MenuPivotPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -146,6 +160,7 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml">
       <SubType>Designer</SubType>
@@ -187,6 +202,10 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Phone.Controls, Version=8.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MVVM\MVVM.csproj">
