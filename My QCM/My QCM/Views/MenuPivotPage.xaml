@@ -1,10 +1,11 @@
-﻿<phone:PhoneApplicationPage
+﻿<mvmm:MVVMPhonePage
   x:Class="My_QCM.Views.MenuPivotPage"
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
   xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:mvmm="clr-namespace:MVVM.Views;assembly=MVVM"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   mc:Ignorable="d"
   FontFamily="{StaticResource PhoneFontFamilyNormal}"
@@ -13,63 +14,63 @@
   SupportedOrientations="Portrait"  Orientation="Portrait"
   shell:SystemTray.IsVisible="True">
 
-  <!--LayoutRoot est la grille racine où tout le contenu de la page est placé-->
-  <Grid x:Name="LayoutRoot" Background="Transparent">
-    <!--Contrôle Pivot-->
-    <phone:Pivot Title="Mon compte">
-      <!--Élément un de tableau croisé dynamique-->
-      <phone:PivotItem Header="Compte">
-        <StackPanel>
-          <TextBlock Text="Nom"       Style="{StaticResource PhoneTextTitle3Style}"/>
-          <TextBlock Text="{Binding}" Style="{StaticResource PhoneTextAccentStyle}"/>
-          <TextBlock Text="Prénom"    Style="{StaticResource PhoneTextTitle3Style}"/>
-          <TextBlock Text="{Binding}" Style="{StaticResource PhoneTextAccentStyle}"/>
-          <TextBlock Text="Email"     Style="{StaticResource PhoneTextTitle3Style}"/>
-          <TextBlock Text="{Binding}" Style="{StaticResource PhoneTextAccentStyle}"/>
-          <TextBlock Text="Groupe"    Style="{StaticResource PhoneTextTitle3Style}"/>
-          <TextBlock Text="{Binding}" Style="{StaticResource PhoneTextAccentStyle}"/>
-          <TextBlock Text="Date de création du compte"  Style="{StaticResource PhoneTextTitle3Style}"/>
-          <TextBlock Text="{Binding}" Style="{StaticResource PhoneTextAccentStyle}"/>
-          <TextBlock Text="Date de dernière connexion"  Style="{StaticResource PhoneTextTitle3Style}"/>
-          <TextBlock Text="{Binding}" Style="{StaticResource PhoneTextAccentStyle}"/>
-        </StackPanel>
-      </phone:PivotItem>
+    <!--LayoutRoot est la grille racine où tout le contenu de la page est placé-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <!--Contrôle Pivot-->
+        <phone:Pivot Title="Mon compte">
+            <!--Élément un de tableau croisé dynamique-->
+            <phone:PivotItem Header="Compte">
+                <StackPanel>
+                    <TextBlock Text="Nom"       Style="{StaticResource PhoneTextTitle3Style}"/>
+                    <TextBlock Text="{Binding}" Style="{StaticResource PhoneTextAccentStyle}"/>
+                    <TextBlock Text="Prénom"    Style="{StaticResource PhoneTextTitle3Style}"/>
+                    <TextBlock Text="{Binding}" Style="{StaticResource PhoneTextAccentStyle}"/>
+                    <TextBlock Text="Email"     Style="{StaticResource PhoneTextTitle3Style}"/>
+                    <TextBlock Text="{Binding}" Style="{StaticResource PhoneTextAccentStyle}"/>
+                    <TextBlock Text="Groupe"    Style="{StaticResource PhoneTextTitle3Style}"/>
+                    <TextBlock Text="{Binding}" Style="{StaticResource PhoneTextAccentStyle}"/>
+                    <TextBlock Text="Date de création du compte"  Style="{StaticResource PhoneTextTitle3Style}"/>
+                    <TextBlock Text="{Binding}" Style="{StaticResource PhoneTextAccentStyle}"/>
+                    <TextBlock Text="Date de dernière connexion"  Style="{StaticResource PhoneTextTitle3Style}"/>
+                    <TextBlock Text="{Binding}" Style="{StaticResource PhoneTextAccentStyle}"/>
+                </StackPanel>
+            </phone:PivotItem>
 
-      <!--Élément deux de tableau croisé dynamique-->
-      <phone:PivotItem Header="Règles">
-        <StackPanel>
-          <TextBlock Text="#1 : Attribution des points"
+            <!--Élément deux de tableau croisé dynamique-->
+            <phone:PivotItem Header="Règles">
+                <StackPanel>
+                    <TextBlock Text="#1 : Attribution des points"
                      Style="{StaticResource PhoneTextTitle3Style}"/>
-          <TextBlock Text="{Binding}"
+                    <TextBlock Text="{Binding}"
                      Style="{StaticResource PhoneTextAccentStyle}"/>
-          <TextBlock Text="#2 : Validation des réponses"
+                    <TextBlock Text="#2 : Validation des réponses"
                      Style="{StaticResource PhoneTextTitle3Style}"/>
-          <TextBlock Text="{Binding}"
+                    <TextBlock Text="{Binding}"
                      Style="{StaticResource PhoneTextAccentStyle}"/>
-          <TextBlock Text="#3 : Déroulement d'un QCM"
+                    <TextBlock Text="#3 : Déroulement d'un QCM"
                      Style="{StaticResource PhoneTextTitle3Style}"/>
-          <TextBlock Text="{Binding}"
+                    <TextBlock Text="{Binding}"
                      Style="{StaticResource PhoneTextAccentStyle}"/>
-        </StackPanel>
-      </phone:PivotItem>
-      <!--Élément trois de tableau croisé dynamique-->
-      <phone:PivotItem Header="My QCM">
-        <StackPanel>
-          <TextBlock Text="Version"
+                </StackPanel>
+            </phone:PivotItem>
+            <!--Élément trois de tableau croisé dynamique-->
+            <phone:PivotItem Header="My QCM">
+                <StackPanel>
+                    <TextBlock Text="Version"
                      Style="{StaticResource PhoneTextTitle3Style}"/>
-          <TextBlock Text="{Binding}"
+                    <TextBlock Text="{Binding}"
                      Style="{StaticResource PhoneTextAccentStyle}"/>
-          <TextBlock Text="dernière mise à jours"
+                    <TextBlock Text="dernière mise à jours"
                      Style="{StaticResource PhoneTextTitle3Style}"/>
-          <TextBlock Text="{Binding}"
+                    <TextBlock Text="{Binding}"
                      Style="{StaticResource PhoneTextAccentStyle}"/>
-          <TextBlock Text="Copyright"
+                    <TextBlock Text="Copyright"
                      Style="{StaticResource PhoneTextTitle3Style}"/>
-          <TextBlock Text="{Binding}"
+                    <TextBlock Text="{Binding}"
                      Style="{StaticResource PhoneTextAccentStyle}"/>
-        </StackPanel>
-      </phone:PivotItem>
-    </phone:Pivot>
-  </Grid>
+                </StackPanel>
+            </phone:PivotItem>
+        </phone:Pivot>
+    </Grid>
 
-</phone:PhoneApplicationPage>
+</mvmm:MVVMPhonePage>

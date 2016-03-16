@@ -8,10 +8,11 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using My_QCM.Resources;
+using MVVM.Views;
 
 namespace My_QCM.Views
 {
-    public partial class LoginPage : PhoneApplicationPage
+    public partial class LoginPage : MVVMPhonePage
     {
         // Constructeur
         public LoginPage()

@@ -7,10 +7,11 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using MVVM.Views;
 
 namespace My_QCM.Views
 {
-    public partial class MenuPivotPage : PhoneApplicationPage
+    public partial class MenuPivotPage : MVVMPhonePage
     {
         public MenuPivotPage()
         {
