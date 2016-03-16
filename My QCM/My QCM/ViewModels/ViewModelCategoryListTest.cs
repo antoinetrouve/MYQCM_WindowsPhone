@@ -1,4 +1,5 @@
 ﻿using BookShop.ViewModels;
+using MVVM.Interfaces;
 using MVVM.ViewModels;
 using My_QCM.Models;
 using System;
@@ -32,9 +33,28 @@ namespace My_QCM.ViewModels
         #endregion
 
         #region Methods
-            protected override void InitializePropertyTrackers()
-        {
 
+        protected override void InitializePropertyTrackers()
+        {
+            base.InitializePropertyTrackers();
+
+            this.AddPropertyTrackerAction(nameof(SelectedItem), (sender, args) =>
+            {
+                if (SelectedItem != null)
+                {
+                   
+                }
+            });
+        }
+
+        public override void OnNavigatedFrom(IViewModel viewModel)
+        {
+            if (viewModel is IViewModelCategory)
+            {
+                ((IViewModelCategory)viewModel).Item = this.SelectedItem;
+                ((IViewModelCategory)viewModel).LoadData();
+                SelectedItem = null;
+            }
         }
         #endregion
     }

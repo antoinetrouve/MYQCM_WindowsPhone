@@ -6,15 +6,22 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
+using MVVM.Views;
 using Microsoft.Phone.Shell;
+using My_QCM.ViewModels;
 
 namespace My_QCM.Views
 {
-    public partial class CategoryListPage : PhoneApplicationPage
+    public partial class CategoryListPage : MVVMPhonePage
     {
+
         public CategoryListPage()
         {
+           
+            this.ViewModel = new ViewModels.ViewModelCategoryListTest();
             InitializeComponent();
         }
+
+        
     }
 }

@@ -1,4 +1,4 @@
-﻿<phone:PhoneApplicationPage
+﻿<mvmm:MVVMPhonePage
     x:Class="My_QCM.Views.CategoryListPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mvmm="clr-namespace:MVVM.Views;assembly=MVVM"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -29,12 +30,10 @@
             <TextBlock Text="MY QCM" Style="{StaticResource PhoneTextNormalStyle}"/>
             <TextBlock Text="Liste des catégories " Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle2Style}"/>
         </StackPanel>
-
-        <!--ContentPanel - placez tout contenu supplémentaire ici-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="12,0,12,0">
-            <ListBox ItemsSource="{Binding CategoriesSource}" SelectedItem="{Binding selectedItem, Mode=TwoWay}" ItemTemplate="{StaticResource CategoryListTemplate}">
+            <ListBox ItemsSource="{Binding ItemsSource}"  ItemTemplate="{StaticResource CategoryListTemplate}">
             </ListBox>
         </Grid>
     </Grid>
 
-</phone:PhoneApplicationPage>
+</mvmm:MVVMPhonePage>

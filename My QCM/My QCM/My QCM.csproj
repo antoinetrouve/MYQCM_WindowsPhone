@@ -114,6 +114,9 @@
     <Compile Include="Views\MenuPivotPage.xaml.cs">
       <DependentUpon>MenuPivotPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\QuestionPage.xaml.cs">
+      <DependentUpon>QuestionPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -131,6 +134,10 @@
     <Page Include="Views\MenuPivotPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\QuestionPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
