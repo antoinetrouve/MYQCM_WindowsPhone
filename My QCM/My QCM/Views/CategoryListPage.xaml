@@ -24,14 +24,14 @@
             <ColumnDefinition Width="Auto"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" BorderThickness="5,5,5,5" BorderBrush="Green"></Border>
+        <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" BorderThickness="1,1,1,1" BorderBrush="Green"></Border>
         <Button Content="Menu"></Button>
         <StackPanel Grid.Row="0" Grid.Column="1" Margin="12,17,0,28">
             <TextBlock Text="MY QCM" Style="{StaticResource PhoneTextNormalStyle}"/>
             <TextBlock Text="Liste des catégories " Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle2Style}"/>
         </StackPanel>
         <Grid x:Name="ContentPanel" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="12,0,12,0">
-            <ListBox ItemsSource="{Binding ItemsSource}"  ItemTemplate="{StaticResource CategoryListTemplate}">
+            <ListBox  HorizontalAlignment="Center" ItemsSource="{Binding ItemsSource}"  ItemTemplate="{StaticResource CategoryListTemplate}">
             </ListBox>
         </Grid>
     </Grid>
