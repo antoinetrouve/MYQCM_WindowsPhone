@@ -14,18 +14,23 @@ namespace My_QCM.Models
 
         private string _Name;
         private bool _IsActif;
+
+        // timer to answer questions
         private int _Countdown;
+
+        // publication start and end time
         private DateTime _DiffDeb;
         private DateTime _DiffEnd;
+
         private DateTime _CreatedAt;
         private DateTime _UpdatedAt;
 
-        //private List<Question> questions;
+        // List of questions to answer
+        private List<Question> Questions;
 
         #endregion
 
         #region Properties
-
         [JsonProperty("name")]
         public string Name
         {
@@ -74,13 +79,19 @@ namespace My_QCM.Models
             get { return _UpdatedAt; }
             set { SetProperty(nameof(UpdatedAt), ref _UpdatedAt, value); }
         }
-
         #endregion
 
         #region Constructor
-        public Mcq(string name, bool isActif)
+        public Mcq(string name, bool isActif, int countdown, DateTime diffdeb, DateTime diffend, DateTime createdAt, DateTime updatedAt, List<Question>questions)
         {
             Name = name;
+            IsActif = isActif;
+            Countdown = countdown;
+            DiffDeb = diffdeb;
+            DiffEnd = diffend;
+            CreatedAt = createdAt;
+            UpdatedAt = updatedAt;
+            Questions = questions;
         }
         #endregion
     }
