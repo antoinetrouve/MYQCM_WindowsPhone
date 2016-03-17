@@ -27,11 +27,9 @@ namespace My_QCM.ViewModels
 
         public override void LoadData()
         {
-
             WebClient webClient = new WebClient();
             webClient.DownloadStringCompleted += WebClient_DownloadStringCompleted;
             webClient.DownloadStringAsync(new Uri("http://192.168.100.22/qcm/web/app_dev.php/api/categories"));
-
         }
 
         private void WebClient_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
@@ -42,19 +40,13 @@ namespace My_QCM.ViewModels
             List<Category> deserializedProduct = JsonConvert.DeserializeObject<List<Category>>(jsonsstream);
             
             //Category[] deserializedProduct = JsonConvert.DeserializeObject<Category[]>(jsonsstream);
-            //System.Diagnostics.Debug.WriteLine( deserializedProduct.Name + " " + deserializedProduct.id + " | " + deserializedProduct.Updated_at + " " + deserializedProduct.Created_at);
+           
             foreach (Category category in deserializedProduct)
             {
                 this.ItemsSource.Add(category);
                 foreach (Mcq mcq in category.Mcqs)
                 {
                  System.Diagnostics.Debug.WriteLine(mcq.Name);
-
-                //    //foreach(Question question in mcq.questions)
-                //    //{
-                //    //    System.Diagnostics.Debug.WriteLine(question.Name);
-
-                //    //}
                 }
             }
             
