@@ -95,10 +95,12 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="LocalizedStrings.cs" />
+    <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\Category.cs" />
-    <Compile Include="Models\JsonModels\CategoryJson.cs" />
     <Compile Include="Models\Mcq.cs" />
     <Compile Include="Models\Question.cs" />
+    <Compile Include="Models\Team.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="ViewModels\Interfaces\IViewModelCategories.cs" />
     <Compile Include="ViewModels\Interfaces\IViewModelCategory.cs" />
     <Compile Include="ViewModels\Interfaces\IViewModelMcq.cs" />
