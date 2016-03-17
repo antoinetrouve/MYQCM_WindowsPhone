@@ -56,6 +56,8 @@ namespace My_QCM.ViewModels
 
             string jsonsstream = e.Result;
             System.Diagnostics.Debug.WriteLine(jsonsstream);
+            Category deserializedProduct = JsonConvert.DeserializeObject<Category>(jsonsstream);
+            System.Diagnostics.Debug.WriteLine( deserializedProduct.Name);
 
         }
 
