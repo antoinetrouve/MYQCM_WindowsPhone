@@ -1,17 +1,18 @@
-﻿using System;
+﻿using MVVM.Data;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MVVM.Data;
-using Newtonsoft.Json;
 
 namespace My_QCM.Models
 {
-    public class Question : ObservableObject
+    public class Answer : ObservableObject
     {
-        #region Field
-        private string _Name;
+        #region Fields
+        private string _Value;
+        private bool _IsValid;
         private DateTime _Created_at;
         private DateTime _Updated_at;
         private int _IdServer;
@@ -39,32 +40,39 @@ namespace My_QCM.Models
             set { SetProperty(nameof(Updated_at), ref _Updated_at, value); }
         }
 
-        [JsonProperty("name")]
-        public string Name
+        [JsonProperty("Value")]
+        public string Value
         {
-            get { return _Name; }
-            set { SetProperty(nameof(Name), ref _Name, value); }
+            get { return _Value; }
+            set { SetProperty(nameof(Value), ref _Value, value); }
         }
 
-        [JsonProperty("answers")]
-        public List<Answer> Answers { get; set; }
+        [JsonProperty("isValid")]
+        public bool IsValid
+        {
+            get { return _IsValid; }
+            set { SetProperty(nameof(IsValid), ref _IsValid, value); }
+        }
+
         #endregion
 
+
+       
         #region Constructor
-        public Question(int idServer, string name, DateTime createdAt, DateTime updatedAt, List<Answer> answers)
+        public Answer(int idServer, string value, DateTime createdAt, DateTime updatedAt, bool isValid)
         {
             IdServer = idServer;
-            Name = name;
+            Value = value;
             Created_at = createdAt;
             Updated_at = updatedAt;
-            Answers = answers;
+            IsValid = isValid;
         }
         #endregion
 
         #region methods
         public override string ToString()
         {
-            return Name;
+            return Value;
         }
 
         #endregion

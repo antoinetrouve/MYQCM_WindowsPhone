@@ -1,19 +1,20 @@
-﻿using System;
+﻿using MVVM.Data;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MVVM.Data;
-using Newtonsoft.Json;
 
 namespace My_QCM.Models
 {
-    public class Question : ObservableObject
+    public class User : ObservableObject
     {
-        #region Field
-        private string _Name;
+        #region Fields
         private DateTime _Created_at;
         private DateTime _Updated_at;
+        private string _Username;
+        private string _Email;
         private int _IdServer;
         #endregion
 
@@ -39,34 +40,39 @@ namespace My_QCM.Models
             set { SetProperty(nameof(Updated_at), ref _Updated_at, value); }
         }
 
-        [JsonProperty("name")]
-        public string Name
+        [JsonProperty("username")]
+        public string Username
         {
-            get { return _Name; }
-            set { SetProperty(nameof(Name), ref _Name, value); }
+            get { return _Username; }
+            set { SetProperty(nameof(Username), ref _Username, value); }
         }
 
-        [JsonProperty("answers")]
-        public List<Answer> Answers { get; set; }
+        [JsonProperty("email")]
+        public string Email
+        {
+            get { return _Email; }
+            set { SetProperty(nameof(Email), ref _Email, value); }
+        }
+
+        [JsonProperty("team")]
+        public Team Team { get; set; }
+
+        [JsonProperty("mcqs")]
+        public List<Mcq> Mcqs { get; set; }
+
         #endregion
 
         #region Constructor
-        public Question(int idServer, string name, DateTime createdAt, DateTime updatedAt, List<Answer> answers)
+        public User(int idServer,string username,string email, Team team, DateTime createdAt, DateTime updatedAt, List<Mcq> mcqs)
         {
             IdServer = idServer;
-            Name = name;
+            Team = team;
+            Email = email;
+            Username = username;
             Created_at = createdAt;
             Updated_at = updatedAt;
-            Answers = answers;
+            Mcqs = mcqs;
         }
-        #endregion
-
-        #region methods
-        public override string ToString()
-        {
-            return Name;
-        }
-
         #endregion
     }
 }
