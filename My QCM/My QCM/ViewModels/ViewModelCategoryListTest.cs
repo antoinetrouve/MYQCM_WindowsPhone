@@ -10,10 +10,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using Newtonsoft.Json;
+using Windows.Networking.Connectivity;
 
 namespace My_QCM.ViewModels
 {
-   public class ViewModelCategoryListTest : ViewModelList<Category>,IViewModelCategories  
+    public class ViewModelCategoryListTest : ViewModelList<Category>, IViewModelCategories
     {
         #region Constructors
 
@@ -24,11 +25,26 @@ namespace My_QCM.ViewModels
         #endregion
         #region Methods
 
-        public override  void LoadData()
+        public override void LoadData()
         {
+            List<string> ipAddresses = new List<string>();
+
+            var hostnames = NetworkInformation.GetHostNames();
+            foreach (var hn in hostnames)
+            {
+                if (hn.IPInformation != null)
+                {
+                    string ipAddress = hn.DisplayName;
+                    ipAddresses.Add(ipAddress);
+                }
+            }
+
+            //IPAddress address = IPAddress.Parse(ipAddresses[0]);
+            //System.Diagnostics.Debug.WriteLine(address);
+
             WebClient webClient = new WebClient();
             webClient.DownloadStringCompleted += WebClient_DownloadStringCompleted;
-            webClient.DownloadStringAsync(new Uri("http://192.168.100.22/qcm/web/app_dev.php/api/users.json"));
+            webClient.DownloadStringAsync(new Uri("http://192.168.100.22/qcm/web/app_dev.php/api/users"));
             this.ItemsSource.Add(new Category("Roman"));
             this.ItemsSource.Add(new Category("SFI"));
             this.ItemsSource.Add(new Category("Romance"));
@@ -38,8 +54,8 @@ namespace My_QCM.ViewModels
         private void WebClient_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
         {
 
-                string jsonsstream = e.Result;
-                System.Diagnostics.Debug.WriteLine(jsonsstream);
+            string jsonsstream = e.Result;
+            System.Diagnostics.Debug.WriteLine(jsonsstream);
 
         }
 
@@ -55,7 +71,7 @@ namespace My_QCM.ViewModels
             {
                 if (SelectedItem != null)
                 {
-                   
+
                 }
             });
         }
