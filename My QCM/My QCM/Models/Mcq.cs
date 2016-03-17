@@ -25,8 +25,8 @@ namespace My_QCM.Models
         private DateTime _CreatedAt;
         private DateTime _UpdatedAt;
 
-        // List of questions to answer
-        private List<Question> Questions;
+
+        private Category _Category;
 
         #endregion
 
@@ -79,10 +79,20 @@ namespace My_QCM.Models
             get { return _UpdatedAt; }
             set { SetProperty(nameof(UpdatedAt), ref _UpdatedAt, value); }
         }
+
+        
+        public Category Category
+        {
+            get { return _Category; }
+            set { SetProperty(nameof(Category),ref _Category , value); }
+        }
+
+        [JsonProperty("questions")]
+        public List<Question> Questions { get; set; }
         #endregion
 
         #region Constructor
-        public Mcq(string name, bool isActif, int countdown, DateTime diffdeb, DateTime diffend, DateTime createdAt, DateTime updatedAt, List<Question>questions)
+        public Mcq(string name, bool isActif,Category category ,int countdown, DateTime diffdeb, DateTime diffend, DateTime createdAt, DateTime updatedAt, List<Question>questions)
         {
             Name = name;
             IsActif = isActif;
@@ -92,6 +102,7 @@ namespace My_QCM.Models
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
             Questions = questions;
+            Category = category;
         }
         #endregion
     }

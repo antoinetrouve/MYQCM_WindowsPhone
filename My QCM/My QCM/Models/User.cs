@@ -16,7 +16,9 @@ namespace My_QCM.Models
         private string _Username;
         private string _Email;
         private int _IdServer;
+        private DateTime _LastLogin;
         #endregion
+
 
         #region Properties
         [JsonProperty("id")]
@@ -54,6 +56,13 @@ namespace My_QCM.Models
             set { SetProperty(nameof(Email), ref _Email, value); }
         }
 
+        [JsonProperty("last_login")]
+        public DateTime LastLogin
+        {
+            get { return _LastLogin; }
+            set { SetProperty(nameof(LastLogin), ref(_LastLogin),value); }
+        }
+
         [JsonProperty("team")]
         public Team Team { get; set; }
 
@@ -63,7 +72,7 @@ namespace My_QCM.Models
         #endregion
 
         #region Constructor
-        public User(int idServer,string username,string email, Team team, DateTime createdAt, DateTime updatedAt, List<Mcq> mcqs)
+        public User(int idServer,string username,string email, Team team, DateTime createdAt, DateTime updatedAt, DateTime lastlogin, List<Mcq> mcqs)
         {
             IdServer = idServer;
             Team = team;
@@ -71,6 +80,7 @@ namespace My_QCM.Models
             Username = username;
             Created_at = createdAt;
             Updated_at = updatedAt;
+            lastlogin = LastLogin = lastlogin;
             Mcqs = mcqs;
         }
         #endregion

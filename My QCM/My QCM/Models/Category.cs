@@ -19,10 +19,6 @@ namespace My_QCM.Models
         private int _IdServer;
         #endregion
 
-        #region Properties
-        [JsonProperty("mcqs")]
-        public List<Mcq> Mcqs { get; set; }
-        #endregion
 
         [JsonProperty("id")]
         public int IdServer
@@ -55,13 +51,12 @@ namespace My_QCM.Models
        
 
         #region Constructor
-        public Category( int idServer, string name, DateTime createdAt,DateTime updatedAt, List<Mcq> mcqs)
+        public Category( int idServer, string name, DateTime createdAt,DateTime updatedAt)
         {
             IdServer = idServer;
             Name = name;
             Created_at = createdAt;
             Updated_at = updatedAt;
-            Mcqs = mcqs;
         }
         #endregion
 
