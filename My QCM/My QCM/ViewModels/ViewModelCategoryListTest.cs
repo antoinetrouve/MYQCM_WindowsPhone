@@ -27,38 +27,37 @@ namespace My_QCM.ViewModels
 
         public override void LoadData()
         {
-            List<string> ipAddresses = new List<string>();
-
-            var hostnames = NetworkInformation.GetHostNames();
-            foreach (var hn in hostnames)
-            {
-                if (hn.IPInformation != null)
-                {
-                    string ipAddress = hn.DisplayName;
-                    ipAddresses.Add(ipAddress);
-                }
-            }
-
-            //IPAddress address = IPAddress.Parse(ipAddresses[0]);
-            //System.Diagnostics.Debug.WriteLine(address);
 
             WebClient webClient = new WebClient();
             webClient.DownloadStringCompleted += WebClient_DownloadStringCompleted;
-            webClient.DownloadStringAsync(new Uri("http://192.168.100.22/qcm/web/app_dev.php/api/users"));
-            this.ItemsSource.Add(new Category("Roman"));
-            this.ItemsSource.Add(new Category("SFI"));
-            this.ItemsSource.Add(new Category("Romance"));
-            this.ItemsSource.Add(new Category("Fantastique"));
+            webClient.DownloadStringAsync(new Uri("http://192.168.100.22/qcm/web/app_dev.php/api/categories"));
+
         }
 
         private void WebClient_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
         {
-
             string jsonsstream = e.Result;
             System.Diagnostics.Debug.WriteLine(jsonsstream);
-            Category deserializedProduct = JsonConvert.DeserializeObject<Category>(jsonsstream);
-            System.Diagnostics.Debug.WriteLine( deserializedProduct.Name);
+            //Category deserializedProduct = JsonConvert.DeserializeObject<Category>(jsonsstream);
+            List<Category> deserializedProduct = JsonConvert.DeserializeObject<List<Category>>(jsonsstream);
+            
+            //Category[] deserializedProduct = JsonConvert.DeserializeObject<Category[]>(jsonsstream);
+            //System.Diagnostics.Debug.WriteLine( deserializedProduct.Name + " " + deserializedProduct.id + " | " + deserializedProduct.Updated_at + " " + deserializedProduct.Created_at);
+            foreach (Category category in deserializedProduct)
+            {
+                this.ItemsSource.Add(category);
+                foreach (Mcq mcq in category.Mcqs)
+                {
+                 System.Diagnostics.Debug.WriteLine(mcq.Name);
 
+                //    //foreach(Question question in mcq.questions)
+                //    //{
+                //    //    System.Diagnostics.Debug.WriteLine(question.Name);
+
+                //    //}
+                }
+            }
+            
         }
 
         #endregion

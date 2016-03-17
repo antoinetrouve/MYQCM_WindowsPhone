@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MVVM.Data;
+using Newtonsoft.Json;
 
 namespace My_QCM.Models
 {
@@ -12,66 +13,72 @@ namespace My_QCM.Models
         #region Fields
 
         private string _Name;
-        private bool _isActif;
-        private int _countdown;
-        private DateTime _diffDeb;
-        private DateTime _diffEnd;
-        private DateTime _createdAt;
-        private DateTime _updatedAt;
+        private bool _IsActif;
+        private int _Countdown;
+        private DateTime _DiffDeb;
+        private DateTime _DiffEnd;
+        private DateTime _CreatedAt;
+        private DateTime _UpdatedAt;
 
-        private List<Category> categories;
-        private List<Question> questions;
+        //private List<Question> questions;
 
         #endregion
 
         #region Properties
 
+        [JsonProperty("name")]
         public string Name
         {
             get { return _Name; }
             set { SetProperty(nameof(Name), ref _Name, value); }
         }
 
-        public bool isActif
+        [JsonProperty("isActif")]
+        public bool IsActif
         {
-            get { return _isActif; }
-            set { SetProperty(nameof(isActif),ref _isActif, value); }
+            get { return _IsActif; }
+            set { SetProperty(nameof(IsActif),ref _IsActif, value); }
         }
 
-        public int countdown
+        [JsonProperty("countdown")]
+        public int Countdown
         {
-            get { return _countdown; }
-            set { SetProperty(nameof(countdown), ref _countdown, value); }
+            get { return _Countdown; }
+            set { SetProperty(nameof(Countdown), ref _Countdown, value); }
         }
-        
-        public DateTime diffDeb
+
+        [JsonProperty("diff_deb")]
+        public DateTime DiffDeb
         {
-            get { return _diffDeb; }
-            set { SetProperty(nameof(diffDeb), ref _diffDeb, value); }
+            get { return _DiffDeb; }
+            set { SetProperty(nameof(DiffDeb), ref _DiffDeb, value); }
         }
-        
-        public DateTime diffEnd
+
+        [JsonProperty("diff_end")]
+        public DateTime DiffEnd
         {
-            get { return _diffEnd; }
-            set { SetProperty(nameof(diffEnd), ref _diffEnd, value); }
+            get { return _DiffEnd; }
+            set { SetProperty(nameof(DiffEnd), ref _DiffEnd, value); }
         }
-        
-        public DateTime createdAt
+
+        [JsonProperty("created_at")]
+        public DateTime CreatedAt
         {
-            get { return _createdAt; }
-            set { SetProperty(nameof(createdAt), ref _createdAt, value); }
+            get { return _CreatedAt; }
+            set { SetProperty(nameof(CreatedAt), ref _CreatedAt, value); }
         }
-        
-        public DateTime updatedAt
+
+        [JsonProperty("updated_at")]
+        public DateTime UpdatedAt
         {
-            get { return _updatedAt; }
-            set { SetProperty(nameof(updatedAt), ref _updatedAt, value); }
+            get { return _UpdatedAt; }
+            set { SetProperty(nameof(UpdatedAt), ref _UpdatedAt, value); }
         }
 
         #endregion
 
         #region Constructor
-        public Mcq(string name)
+        public Mcq(string name, bool isActif)
         {
             Name = name;
         }

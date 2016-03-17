@@ -24,7 +24,7 @@ namespace My_QCM.ViewModels
         #region Methods
         public override void LoadData()
         {
-            this.ItemsSource.Add(new Mcq("25523-63"));
+            //this.ItemsSource.Add(new Mcq("25523-63"));
         }
         #endregion
 

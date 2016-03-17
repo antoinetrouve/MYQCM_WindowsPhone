@@ -96,6 +96,7 @@
     </Compile>
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\JsonModels\CategoryJson.cs" />
     <Compile Include="Models\Mcq.cs" />
     <Compile Include="Models\Question.cs" />
     <Compile Include="ViewModels\Interfaces\IViewModelCategories.cs" />
