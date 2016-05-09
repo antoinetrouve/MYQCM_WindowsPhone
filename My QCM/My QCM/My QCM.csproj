@@ -109,7 +109,9 @@
     <Compile Include="ViewModels\Interfaces\IViewModelMcqs.cs" />
     <Compile Include="ViewModels\Interfaces\IViewModelQuestion.cs" />
     <Compile Include="ViewModels\Interfaces\IViewModelQuestions.cs" />
+    <Compile Include="ViewModels\Interfaces\IViewModelUser.cs" />
     <Compile Include="ViewModels\ViewModelCategoryListTest.cs" />
+    <Compile Include="ViewModels\ViewModelLoginPageTest.cs" />
     <Compile Include="ViewModels\ViewModelMcqListTest.cs" />
     <Compile Include="Views\CategoryListPage.xaml.cs">
       <DependentUpon>CategoryListPage.xaml</DependentUpon>

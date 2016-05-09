@@ -32,10 +32,10 @@
         <TextBlock Style="{StaticResource PhoneTextLargeStyle}"  Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" Grid.ColumnSpan="5" Text="Welcome to My QCM"  Padding="5,5,5,5"></TextBlock>
         <StackPanel Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3">
             <TextBlock  Padding="5,5,5,5" VerticalAlignment="Center"  Text="Login" HorizontalAlignment="Left"></TextBlock>
-            <TextBox ></TextBox>
+            <TextBox Text="{Binding userName, Mode=TwoWay}"></TextBox>
             <TextBlock Padding="5,5,5,5" HorizontalAlignment="Left"  VerticalAlignment="Center"  Text="Password"></TextBlock>
-            <TextBox ></TextBox>
-        <Button Background="Black" Content="Connexion" Grid.ColumnSpan="3" Grid.Row="5"></Button>
+      <TextBox Text="{Binding password, Mode=TwoWay}"></TextBox>
+      <Button Background="Black" Command="{Binding ConnectionCommand}"  Content="Connexion" Grid.ColumnSpan="3" Grid.Row="5"></Button>
         </StackPanel>
     </Grid>
 

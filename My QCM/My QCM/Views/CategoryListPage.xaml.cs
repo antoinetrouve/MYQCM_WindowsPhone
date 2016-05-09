@@ -14,14 +14,12 @@ namespace My_QCM.Views
 {
     public partial class CategoryListPage : MVVMPhonePage
     {
-
+        #region Constructor
         public CategoryListPage()
         {
-           
-            this.ViewModel = new ViewModels.ViewModelCategoryListTest();
+            this.ViewModel = new ViewModelCategoryListTest();
             InitializeComponent();
         }
-
-        
+        #endregion
     }
 }

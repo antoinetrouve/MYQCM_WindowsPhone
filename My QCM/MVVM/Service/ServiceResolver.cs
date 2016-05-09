@@ -37,8 +37,13 @@ namespace MVVM.Service
             }
             if (serviceAllreadyRegistered && overrideIfExist)
             {
-
+                _Services[serviceType] = service;
             }
+            else if(serviceAllreadyRegistered && overrideIfExist)
+            {
+                throw new Exception("Une instance d'un service est déjà enregistrée pour ce type de service.");
+            }
+            
         }
 
         public static T GetService<T>()
@@ -50,6 +55,10 @@ namespace MVVM.Service
             if (_Services.ContainsKey(serviceType))
             {
                 service = (T)_Services[serviceType];
+            }
+            else
+            {
+                throw new Exception("Aucun service enregistré pour le type de service spécifié");
             }
 
             return service;

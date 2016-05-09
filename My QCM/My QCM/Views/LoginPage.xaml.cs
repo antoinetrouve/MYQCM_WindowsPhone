@@ -9,6 +9,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using My_QCM.Resources;
 using MVVM.Views;
+using My_QCM.ViewModels;
 
 namespace My_QCM.Views
 {
@@ -17,6 +18,7 @@ namespace My_QCM.Views
         // Constructeur
         public LoginPage()
         {
+            this.ViewModel = new ViewModelLoginPageTest();
             InitializeComponent();
 
             // Exemple de code pour la localisation d'ApplicationBar

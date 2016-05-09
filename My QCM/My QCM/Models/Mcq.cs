@@ -14,18 +14,13 @@ namespace My_QCM.Models
 
         private string _Name;
         private bool _IsActif;
-
         // timer to answer questions
         private int _Countdown;
-
         // publication start and end time
         private DateTime _DiffDeb;
         private DateTime _DiffEnd;
-
         private DateTime _CreatedAt;
         private DateTime _UpdatedAt;
-
-
         private Category _Category;
 
         #endregion
