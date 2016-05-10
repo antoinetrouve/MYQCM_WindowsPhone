@@ -20,61 +20,41 @@ namespace My_QCM.ViewModels
     public class ViewModelCategoryListTest : ViewModelList<Category>, IViewModelCategories
     {
         #region Fields
+        /// <summary>
+        ///     View model to show mcq List associated to the Category.
+        /// </summary>
+        private ViewModelMcqListTest _ViewModelMcqListTest;
         private DelegateCommand _CategorySelectCommand;
         #endregion
 
         #region Properties
+        /// <summary>
+        ///     Get View Model Mcqs,to show Mcq list
+        /// </summary>
+        public IViewModelMcqs ViewModelMcqs => _ViewModelMcqListTest;
         public DelegateCommand CategorySelectCommand => _CategorySelectCommand;
         public Category category { get; set; }
         #endregion
-        
+
+        #region Constructor
+        public ViewModelCategoryListTest()
+        {
+            _ViewModelMcqListTest = new ViewModelMcqListTest();
+        }
+        #endregion
+
         #region Methods
 
         public override void LoadData()
         {
             IsBusy = true;
-            WebClient webClient = new WebClient();
-            webClient.DownloadStringCompleted += WebClient_DownloadStringCompleted;
-            webClient.DownloadStringAsync(new Uri("http://192.168.1.14/qcm/web/app_dev.php/api/users/antoine"));
-        }
-
-        private void WebClient_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
-        {
-            string jsonsstream = null;
-            try
-            {
-                jsonsstream = e.Result;
-            }
-            catch (Exception ex)
-            {
-                if (ex.InnerException != null)
-                {
-                    string err = ex.InnerException.Message;
-                }
-            }
-
-            User deserializedUser = JsonConvert.DeserializeObject<User>(jsonsstream);
-
-            // liste des id server sans doublon
-            List<int> categoriesIdServers = new List<int>();
-            // liste des catégory a utilisé
-            List<Category> categories = new List<Category>();
-            //Gestion Doublon de QCM user pour le nom des catégoeries
-            foreach (Mcq mcq in deserializedUser.Mcqs)
-            {
-                // Renvoi un bool false si idServeur n'existe pas dans la liste
-                bool isInside = categoriesIdServers.Contains(mcq.Category.IdServer);
-                if (isInside == false)
-                {
-                    categoriesIdServers.Add(mcq.Category.IdServer);
-                    categories.Add(mcq.Category); 
-                }
-            }
-
-            foreach (Category cat in categories)
+            //clear itemSource list of Category
+            this.ItemsSource.Clear();
+            foreach (Category cat in DataStore.Instance.Categories)
             {
                 this.ItemsSource.Add(cat);
             }
+
             IsBusy = false;
         }
 
@@ -86,6 +66,19 @@ namespace My_QCM.ViewModels
             {
                 if (SelectedItem != null)
                 {
+                    int id = this.SelectedItem.IdServer;
+                    DataStore.Instance.Mcqs_Category.Clear();
+                    foreach(Mcq mcq in DataStore.Instance.Mcqs)
+                    {
+                        if(mcq.Category.IdServer == id)
+                        {
+                            DataStore.Instance.Mcqs_Category.Add(mcq);
+                        }
+                        else
+                        {
+                            System.Diagnostics.Debug.WriteLine("Absente");
+                        }
+                    }
                     ServiceResolver.GetService<INavigationService>().Navigate(new Uri("/Views/McqListPage.xaml", UriKind.Relative));
                 }
             });
@@ -125,19 +118,6 @@ namespace My_QCM.ViewModels
             }
         }
 
-        #endregion
-
-        #region CategoryAddCommand
-
-        private bool CanExecuteCategoryAddCommand(object parameter)
-        {
-            return !string.IsNullOrWhiteSpace(category.ToString());
-        }
-
-        private void ExecuteCategoryAddCommand(object parameter)
-        {
-            Debug.WriteLine(this.SelectedItem.Name);
-        }
         #endregion
 
     }

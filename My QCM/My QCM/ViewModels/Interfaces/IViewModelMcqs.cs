@@ -7,7 +7,7 @@ using MVVM.Interfaces;
 using My_QCM.Models;
 
 
-namespace My_QCM.ViewModels.Interfaces
+namespace My_QCM.ViewModels
 {
     public interface IViewModelMcqs : IViewModelList<Mcq>
     {
