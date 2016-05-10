@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using My_QCM.ViewModels;
 using MVVM.Views;
 
 namespace My_QCM.Views
@@ -16,6 +17,7 @@ namespace My_QCM.Views
         public QuestionPage()
         {
             InitializeComponent();
+            this.ViewModel = new ViewModelQuestionTest();
         }
     }
 }

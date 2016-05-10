@@ -97,12 +97,15 @@
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Connection.cs" />
+    <Compile Include="Models\DataStore.cs" />
     <Compile Include="Models\Mcq.cs" />
     <Compile Include="Models\Media.cs" />
     <Compile Include="Models\Question.cs" />
     <Compile Include="Models\Team.cs" />
     <Compile Include="Models\TypeMedia.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="ViewModels\Interfaces\IViewModelAnswers.cs" />
     <Compile Include="ViewModels\Interfaces\IViewModelCategories.cs" />
     <Compile Include="ViewModels\Interfaces\IViewModelCategory.cs" />
     <Compile Include="ViewModels\Interfaces\IViewModelMcq.cs" />
@@ -113,6 +116,7 @@
     <Compile Include="ViewModels\ViewModelCategoryListTest.cs" />
     <Compile Include="ViewModels\ViewModelLoginPageTest.cs" />
     <Compile Include="ViewModels\ViewModelMcqListTest.cs" />
+    <Compile Include="ViewModels\ViewModelQuestionTest.cs" />
     <Compile Include="Views\CategoryListPage.xaml.cs">
       <DependentUpon>CategoryListPage.xaml</DependentUpon>
     </Compile>

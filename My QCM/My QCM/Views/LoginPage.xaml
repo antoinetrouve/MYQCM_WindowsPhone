@@ -34,7 +34,7 @@
             <TextBlock  Padding="5,5,5,5" VerticalAlignment="Center"  Text="Login" HorizontalAlignment="Left"></TextBlock>
             <TextBox Text="{Binding userName, Mode=TwoWay}"></TextBox>
             <TextBlock Padding="5,5,5,5" HorizontalAlignment="Left"  VerticalAlignment="Center"  Text="Password"></TextBlock>
-      <TextBox Text="{Binding password, Mode=TwoWay}"></TextBox>
+      <PasswordBox Password="{Binding password, Mode=TwoWay}"></PasswordBox>
       <Button Background="Black" Command="{Binding ConnectionCommand}"  Content="Connexion" Grid.ColumnSpan="3" Grid.Row="5"></Button>
         </StackPanel>
     </Grid>

@@ -8,7 +8,7 @@ using My_QCM.Models;
 
 namespace My_QCM.ViewModels
 {
-    interface IViewModelQuestion : IViewModelItem<Question>
+    public interface IViewModelQuestion : IViewModelItem<Question>
     {
     }
 }

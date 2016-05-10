@@ -22,10 +22,17 @@ namespace My_QCM.Models
         private DateTime _CreatedAt;
         private DateTime _UpdatedAt;
         private Category _Category;
-
+        private int _IdServer;
         #endregion
 
         #region Properties
+
+        [JsonProperty("id")]
+        public int IdServer
+        {
+            get { return _IdServer; }
+            set { SetProperty(nameof(IdServer), ref _IdServer, value); }
+        }
         [JsonProperty("name")]
         public string Name
         {
@@ -87,18 +94,18 @@ namespace My_QCM.Models
         #endregion
 
         #region Constructor
-        public Mcq(string name, bool isActif,Category category ,int countdown, DateTime diffdeb, DateTime diffend, DateTime createdAt, DateTime updatedAt, List<Question>questions)
+        public Mcq()
         {
-            Name = name;
-            IsActif = isActif;
-            Countdown = countdown;
-            DiffDeb = diffdeb;
-            DiffEnd = diffend;
-            CreatedAt = createdAt;
-            UpdatedAt = updatedAt;
-            Questions = questions;
-            Category = category;
+           
         }
+        #endregion
+
+        #region methods
+        public override string ToString()
+        {
+            return Name;
+        }
+
         #endregion
     }
 }

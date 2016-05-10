@@ -32,9 +32,8 @@
     <!--ContentPanel - placez tout contenu supplémentaire ici-->
     <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
       <StackPanel x:Name="contentMedia">
-        <TextBlock x:Name="tbvalue" Text="Intitulé de la question" Style="{StaticResource PhoneTextAccentStyle}"></TextBlock>
-        <MediaElement x:Name="mediaElement" Height="100"/>
-        <Image x:Name="imageElement" Height="100" />
+                <TextBlock x:Name="tbvalue" Text="Intitulé de la question" Style="{StaticResource PhoneTextAccentStyle}"></TextBlock>
+                
         <TextBlock x:Name="tbanswer" Text="Choisissez votre réponse:" Style="{StaticResource PhoneTextAccentStyle}"></TextBlock>
       </StackPanel>
     </Grid>
@@ -44,10 +43,13 @@
         <RowDefinition Height="*"/>
         <RowDefinition Height="Auto"/>
       </Grid.RowDefinitions>
-      <ListBox x:Name="answerList" Grid.Row="0" ItemsSource="{Binding ItemsSource}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}"/>
+      <ListBox x:Name="answerList" Grid.Row="0" 
+               ItemsSource="{Binding ItemsSource}" 
+               SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                ItemTemplate="{StaticResource McqListTemplate}"/>
       <StackPanel Grid.Row="2">
-        <TextBlock Text="La réponse"></TextBlock>
-        <Button Content="Valider"></Button>
+                <TextBlock Text="{Binding SelectedItem}"></TextBlock>
+        <Button x:Name="NextButton" Content="Suivante"></Button>
       </StackPanel>
     </Grid>
   </Grid>
