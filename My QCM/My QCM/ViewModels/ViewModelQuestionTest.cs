@@ -46,7 +46,7 @@ namespace My_QCM.ViewModels
         /// <summary>
         ///   Call When the page Become the First
         /// </summary>
-        /// <param name="viewModel">Vue-modèle de la page.</param>
+        /// <param name="viewModel">View model Page.</param>
         public override void OnNavigatedTo(IViewModel viewModel)
         {
             base.OnNavigatedTo(viewModel);

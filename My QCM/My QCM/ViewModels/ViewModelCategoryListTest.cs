@@ -50,6 +50,7 @@ namespace My_QCM.ViewModels
             IsBusy = true;
             //clear itemSource list of Category
             this.ItemsSource.Clear();
+            //Foreach the Category and Add to the List
             foreach (Category cat in DataStore.Instance.Categories)
             {
                 this.ItemsSource.Add(cat);
@@ -58,6 +59,7 @@ namespace My_QCM.ViewModels
             IsBusy = false;
         }
 
+        //When a Item selected inside the list
         protected override void InitializePropertyTrackers()
         {
             base.InitializePropertyTrackers();
@@ -87,33 +89,33 @@ namespace My_QCM.ViewModels
         #region Navigation
 
         /// <summary>
-        ///     Appelé lorsqu'une page devient la page active dans une frame.
+        ///     Call when a page become the page inside a Frame
         /// </summary>
         /// <param name="viewModel">Vue-modèle de la page.</param>
         public override void OnNavigatedTo(IViewModel viewModel)
         {
             base.OnNavigatedTo(viewModel);
 
-            //Chargement des données lorsque l'on arrive sur la page.
+            //Download Data inside
             LoadData();
         }
 
         /// <summary>
-        ///     Appelé lorsqu'une page n'est plus la page active dans une frame.
+        ///   Call when tis Page is not longer active
         /// </summary>
-        /// <param name="viewModel">Vue-modèle de la page.</param>
+        /// <param name="viewModel">Page View Model.</param>
         public override void OnNavigatedFrom(IViewModel viewModel)
         {
             base.OnNavigatedFrom(viewModel);
 
-            //Si le vue-modèle de la page suivante est celui de la fiche d'une catégorie.
+            //If the next Model View is IViewModelCategory
             if (viewModel is IViewModelCategory)
             {
-                //On donné l'élément sélectionné au vue-modèle.
+                //Give the Element.
                 ((IViewModelCategory)viewModel).Item = this.SelectedItem;
-                //On charge les données
+                //Upload Data
                 ((IViewModelCategory)viewModel).LoadData();
-                //On remet la sélection à null.
+                //Make selector to null
                 SelectedItem = null;
             }
         }

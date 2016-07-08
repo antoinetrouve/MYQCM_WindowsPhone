@@ -67,13 +67,14 @@ namespace My_QCM.ViewModels
         {
             WebClient webClient = new WebClient();
             webClient.DownloadStringCompleted += WebClient_DownloadStringCompleted;
-            webClient.DownloadStringAsync(new Uri("http://192.168.1.14/qcm/web/app_dev.php/api/users/" + userName));
+            webClient.DownloadStringAsync(new Uri("http://192.168.100.78/MY_QCM/web/app_dev.php/api/users/" + userName));
         }
 
         private void WebClient_ToConnect()
         {
             
         }
+        // When the Client finish to download the Flux Deserialize User
         private void WebClient_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
         {
             User deserializedUser = null;
@@ -92,7 +93,7 @@ namespace My_QCM.ViewModels
             }
 
             try
-            {
+            {   //Deserialize the json flux to user
                  deserializedUser = JsonConvert.DeserializeObject<User>(jsonsstream);
                 
             }
@@ -105,11 +106,11 @@ namespace My_QCM.ViewModels
             
             if (err == null)
             {
-                // liste des id server sans doublon
+                // list ID_server Unique Of Categ
                 List<int> categoriesIdServers = new List<int>();
                 // liste des catégory a utilisé
                 List<Category> categories = new List<Category>();
-                //Gestion Doublon de QCM user pour le nom des catégoeries
+                //Gestion Doublon de QCM user pour le nom des catégories
                 foreach (Mcq mcq in deserializedUser.Mcqs)
                 {
                     DataStore.Instance.Mcqs.Add(mcq);
@@ -179,7 +180,7 @@ namespace My_QCM.ViewModels
         {
             WebClient webClient = new WebClient();
             webClient.UploadStringCompleted += WebClient_UploadStringCompleted;
-            webClient.UploadStringAsync(new Uri("http://192.168.1.14/qcm/web/app_dev.php/api/users/") , flux);
+            webClient.UploadStringAsync(new Uri("http://192.168.100.22/qcm/web/app_dev.php/api/users/") , flux);
         }
 
         /// <summary>
@@ -207,12 +208,13 @@ namespace My_QCM.ViewModels
         }
 
         #region ConnectionCommand
-
+        //If UserName and Password is not set cant click on the ButtonConnection
         private bool CanExecuteConnectionCommand(object parameter)
         {
             return (!string.IsNullOrWhiteSpace(userName) && !string.IsNullOrWhiteSpace(password));
         }
 
+        // 
         private void ExecuteConnectionCommand(object parameter)
         {
             jsonConnection = IdToJson(userName, password);
@@ -224,9 +226,9 @@ namespace My_QCM.ViewModels
         #region Navigation
 
         /// <summary>
-        ///     Appelé lorsqu'une page devient la page active dans une frame.
+        ///     Call when the Page Become the page of the View
         /// </summary>
-        /// <param name="viewModel">Vue-modèle de la page.</param>
+        /// <param name="viewModel">Model View of the Page.</param>
         public override void OnNavigatedTo(IViewModel viewModel)
         {
             base.OnNavigatedTo(viewModel);
