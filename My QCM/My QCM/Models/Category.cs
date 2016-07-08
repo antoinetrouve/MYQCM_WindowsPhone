@@ -19,6 +19,9 @@ namespace My_QCM.Models
         private int _IdServer;
         #endregion
 
+        /// <summary>
+        /// Json property to define element recup when the json flux was Deserialize 
+        /// </summary>
 
         [JsonProperty("id")]
         public int IdServer

@@ -38,6 +38,7 @@ namespace My_QCM.ViewModels
         #region Methods
         public override void LoadData()
         {
+            // Foreach Mcq in Category
             this.ItemsSource.Clear();
             foreach (Mcq mcq in DataStore.Instance.Mcqs_Category)
             {
@@ -57,6 +58,7 @@ namespace My_QCM.ViewModels
                     int id = this.SelectedItem.IdServer;
                     foreach (Mcq mcq in DataStore.Instance.Mcqs)
                     {
+                        // Set the Mcq value
                         if (mcq.IdServer == id)
                         {
                             DataStore.Instance.McqSelected.IdServer = mcq.IdServer;
@@ -75,6 +77,7 @@ namespace My_QCM.ViewModels
                             System.Diagnostics.Debug.WriteLine("Absente");
                         }
                     }
+                    //Run the Next Page
                     ServiceResolver.GetService<INavigationService>().Navigate(new Uri("/Views/QuestionPage.xaml", UriKind.Relative));
                 }
             });
@@ -83,33 +86,33 @@ namespace My_QCM.ViewModels
         #region Navigation
 
         /// <summary>
-        ///     Appelé lorsqu'une page devient la page active dans une frame.
+        ///     Call when the page become the Active Page
         /// </summary>
-        /// <param name="viewModel">Vue-modèle de la page.</param>
+        /// <param name="viewModel">ViewModel of the Page</param>
         public override void OnNavigatedTo(IViewModel viewModel)
         {
             base.OnNavigatedTo(viewModel);
 
-            //Chargement des données lorsque l'on arrive sur la page.
+            //Upload data on the page
             LoadData();
         }
 
         /// <summary>
-        ///     Appelé lorsqu'une page n'est plus la page active dans une frame.
+        ///     Call when the page is not active on the Model
         /// </summary>
-        /// <param name="viewModel">Vue-modèle de la page.</param>
+        /// <param name="viewModel">Page ViewModel</param>
         public override void OnNavigatedFrom(IViewModel viewModel)
         {
             base.OnNavigatedFrom(viewModel);
 
-            //Si le vue-modèle de la page suivante est celui de la fiche d'une catégorie.
+            //If ViewModel is IViewModelMcq
             if (viewModel is IViewModelMcq)
             {
-                //On donné l'élément sélectionné au vue-modèle.
+                //Set the Event to the View_Model
                 ((IViewModelMcq)viewModel).Item = this.SelectedItem;
-                //On charge les données
+                //Upload Data
                 ((IViewModelMcq)viewModel).LoadData();
-                //On remet la sélection à null.
+                //Return to null
                 SelectedItem = null;
             }
         }
